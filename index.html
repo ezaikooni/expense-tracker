@@ -1,21 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker PWA</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <script defer src="app.js"></script>
+    <title>Expense Tracker</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include SweetAlert2 CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
+
 <body>
-    <h1>Expense Tracker</h1>
-    <form id="expense-form">
-        <input type="text" id="expense-item" placeholder="Item" required>
-        <input type="number" id="expense-amount" placeholder="Amount" required>
-        <input type="file" id="receipt-upload">
-        <button type="submit">Add Expense</button>
-    </form>
-    <ul id="expense-list"></ul>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Expense Tracker</h1>
+
+        <!-- Buttons to initiate auth sequence and sign out -->
+        <div class="text-center mb-3">
+            <button id="authorize_button" class="btn btn-primary" onclick="handleAuthClick()">Authorize</button>
+            <button id="signout_button" class="btn btn-secondary" onclick="handleSignoutClick()">Sign Out</button>
+        </div>
+
+        <!-- Form to add new expense -->
+        <form id="expense-form" class="mb-4">
+            <div class="form-group">
+                <label for="expense-item">Item</label>
+                <input type="text" class="form-control" id="expense-item" placeholder="Enter item name" required>
+            </div>
+            <div class="form-group">
+                <label for="expense-amount">Amount</label>
+                <input type="number" class="form-control" id="expense-amount" placeholder="Enter amount" required>
+            </div>
+            <div class="form-group">
+                <label for="expense-receipt">Upload Receipt</label>
+                <input type="file" class="form-control-file" id="expense-receipt" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Add Expense</button>
+        </form>
+
+        <h2 class="text-center">Expense List</h2>
+        <ul id="expense-list" class="list-group">
+            <!-- The fetched expense data will be displayed here -->
+        </ul>
+        <div class="d-flex justify-content-between mt-3">
+            <button id="prev-button" class="btn btn-primary" disabled>Previous</button>
+            <span id="page-info" class="align-self-center">Page 1</span>
+            <button id="next-button" class="btn btn-primary" disabled>Next</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <!-- Load Google API and Client Library -->
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    <!-- Reference to the separated JS file -->
+
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- Include SweetAlert2 CSS and JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-</html>
