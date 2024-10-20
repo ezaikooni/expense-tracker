@@ -1,0 +1,94 @@
+/* Background and base styles */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+/* Header styles */
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-toggler {
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%281,1,1,0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Form and content styling */
+.bg-light-custom {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-control,
+.form-control-file {
+    border-radius: 20px;
+}
+
+.btn-primary,
+.btn-success {
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+}
+
+h2 {
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #343a40;
+    color: #ddd;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+    /* Pushes footer to the bottom */
+    width: 100%;
+}
+
+.footer p,
+.footer small {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Responsive and mobile-friendly adjustments */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    .btn-primary,
+    .btn-success {
+        font-size: 0.9rem;
+    }
+
+    .bg-light-custom {
+        padding: 1rem;
+    }
+}
