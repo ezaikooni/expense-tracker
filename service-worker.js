@@ -1,16 +1,19 @@
 const cacheName = 'expense-tracker-cache-v1';
+const basePath = location.hostname === 'localhost' ? '/' : '/expense-tracker/';
+
 const assetsToCache = [
-  '/',
-  '/index.html',
-  '/asset/style.css',
-  '/asset/app.js',
-  '/asset/manifest.json',
+  `${basePath}`,
+  `${basePath}index.html`,
+  `${basePath}asset/style.css`,
+  `${basePath}asset/app.js`,
+  `${basePath}asset/manifest.json`,
   'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css',
   'https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css',
   'https://cdn.jsdelivr.net/npm/sweetalert2@11',
   'https://apis.google.com/js/api.js',
   'https://accounts.google.com/gsi/client'
 ];
+
 
 self.addEventListener('install', event => {
   event.waitUntil(
