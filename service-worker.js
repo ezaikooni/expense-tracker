@@ -1,7 +1,7 @@
 const cacheName = 'expense-tracker-cache-v1';
 const assetsToCache = [
   '/',
-  '/asset/index.html',
+  '/index.html',
   '/asset/style.css',
   '/asset/app.js',
   '/asset/manifest.json',
@@ -15,6 +15,7 @@ const assetsToCache = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(cacheName).then(cache => {
+      console.log('Caching assets...');
       return cache.addAll(assetsToCache);
     })
   );
@@ -33,7 +34,10 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(response => {
-      return response || fetch(event.request);
+      return response || fetch(event.request).catch(() => {
+        // Optionally, return a fallback page or asset when offline and the fetch fails.
+        return caches.match('/fallback.html');
+      });
     })
   );
 });
